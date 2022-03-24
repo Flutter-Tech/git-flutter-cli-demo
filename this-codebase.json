@@ -1,0 +1,92 @@
+{
+  "version": "1.0",
+  "capability": "",
+  "labels": {},
+  "branching-flow": {
+    "teams": [
+      "leeds",
+      "porto"
+    ],
+    "rules": {
+      ":team/bugfix/*": {
+        "source": ":team/develop",
+        "target": ":team/develop",
+        "semver": "",
+        "protection": "",
+        "sync": {
+          "timing": "",
+          "strategy": null,
+          "targets": null
+        },
+        "branch-type": ""
+      },
+      ":team/develop": {
+        "source": "main",
+        "target": "main",
+        "semver": "alpha",
+        "protection": "strict-with-maintainers-bypass",
+        "sync": {
+          "timing": "",
+          "strategy": null,
+          "targets": null
+        },
+        "branch-type": "develop"
+      },
+      ":team/feature/*": {
+        "source": ":team/develop",
+        "target": ":team/develop",
+        "semver": "",
+        "protection": "",
+        "sync": {
+          "timing": "",
+          "strategy": null,
+          "targets": null
+        },
+        "branch-type": "feature"
+      },
+      ":team/release/*": {
+        "source": ":team/develop",
+        "target": "main",
+        "semver": "beta",
+        "protection": "",
+        "sync": {
+          "timing": "",
+          "strategy": null,
+          "targets": null
+        },
+        "branch-type": "release"
+      },
+      "hotfix/*": {
+        "source": "main",
+        "target": "main",
+        "semver": "beta",
+        "protection": "",
+        "sync": {
+          "timing": "",
+          "strategy": null,
+          "targets": null
+        },
+        "branch-type": "hotfix"
+      },
+      "main": {
+        "source": "",
+        "target": "",
+        "semver": "released",
+        "protection": "strict",
+        "sync": {
+          "timing": "proactive",
+          "strategy": [
+            "ff",
+            "merge"
+          ],
+          "targets": [
+            ":allteams/develop",
+            "hotfix/*",
+            ":allteams/release/*"
+          ]
+        },
+        "branch-type": "default"
+      }
+    }
+  }
+}
